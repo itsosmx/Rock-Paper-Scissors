@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;600;700&display=swap');
+:root {
+    --Scissors: hsl(39, 89%, 49%);
+    --Paper: hsl(230, 89%, 62%);
+    --Rock: hsl(349, 71%, 52%);
+    --Lizard: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
+    --Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+    --Dark_Text: hsl(229, 25%, 31%);
+    --Score_Text: hsl(229, 64%, 46%);
+    --Header_Outline: hsl(217, 16%, 45%);
+}
+
+*, *::after, *::after {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    /* background-color: hsl(214, 47%, 23%); */
+    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+article {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+#Header {
+    pointer-events: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid var(--Header_Outline);
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    margin: 5% 20% 0 20%;
+    padding: 1rem;
+    color: white;
+}
+
+#Header ul {
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    line-height: 25px;
+}
+
+.Score {
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    color: var(--Dark_Text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    line-height: 30px;
+}
+
+.Score h1 {
+    font-size: 3rem;
+}
+
+#Game {
+    height: 50vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Game div em {
+    font-size: 3rem;
+}
+
+#Game div {
+    color: var(--Dark_Text);
+    cursor: pointer;
+    background-color: white;
+    border-style: solid;
+    border-width: 1rem;
+    border-radius: 50%;
+    padding: 3rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    position: absolute;
+    transition: box-shadow .1s;
+    -webkit-transition: box-shadow .1s;
+    -moz-transition: box-shadow .1s;
+    -ms-transition: box-shadow .1s;
+    -o-transition: box-shadow .1s;
+}
+
+#Game div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset -5px -5px 5px 5px rgba(0, 0, 0, .3);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+#Paper {
+    left: 35%;
+    border-color: var(--Paper);
+}
+
+.paper em {
+    border-color: var(--Paper);
+}
+
+#Paper:hover {
+    box-shadow: 0px 0px 50px 0px var(--Paper);
+    color: var(--Paper)!important;
+}
+
+#Scissors {
+    right: 35%;
+    border-color: var(--Scissors);
+}
+
+.scissors em {
+    border-color: var(--Scissors);
+}
+
+#Scissors:hover {
+    box-shadow: 0px 0px 50px 0px var(--Scissors);
+    color: var(--Scissors)!important;
+}
+
+#Rock {
+    bottom: -20%;
+    border-color: var(--Rock);
+}
+
+.rock em {
+    border-color: var(--Rock);
+}
+
+#Rock:hover {
+    box-shadow: 0px 0px 50px 0px var(--Rock);
+    color: var(--Rock)!important
+}
+
+#WinnerBox {
+    border: none!important;
+    background: none!important;
+    display: flex;
+    flex-direction: column;
+}
+
+#PlayAgain {
+    cursor: pointer;
+    color: var(--Dark_Text)!important;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+#PlayAgain:hover {
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#user em {
+    margin-left: 15rem;
+}
+
+#winner {
+    animation: PickedShadow 2s 2s linear infinite;
+    -webkit-animation: PickedShadow 2s 2s linear infinite;
+}
+
+#clientwinner {
+    animation: PickedShadow 2s 2s linear infinite, ClientFadeIn 2s linear both;
+    -webkit-animation: PickedShadow 2s 2s linear infinite, ClientFadeIn 2s linear both;
+}
+
+@keyframes PickedShadow {
+    10%{
+        box-shadow: 0 0 0 50px rgba(250, 250, 250, .01);
+    }
+    50% {
+        box-shadow: 0 0 0 200px rgba(250, 250, 250, .01),
+         0 0 0 150px rgba(250, 250, 250, .05);
+    }
+    75% {
+        box-shadow: 0 0 0 200px rgba(250, 250, 250, .01),
+         0 0 0 150px rgba(250, 250, 250, .05),
+        0 0 0 100px rgba(250, 250, 250, .07);
+    }
+    90% {
+        box-shadow: 0 0 0 200px rgba(250, 250, 250, .01),
+        0 0 0 150px rgba(250, 250, 250, .05),
+        0 0 0 100px rgba(250, 250, 250, .07),
+        0 0 0 50px rgba(250, 250, 250, .1);
+    }
+}
+
+#clientAnmtion {
+    animation: ClientFadeIn 2s linear both;
+    -webkit-animation: ClientFadeIn 2s linear both;
+}
+
+#client em {
+    margin-right: 15rem;
+}
+
+@keyframes ClientFadeIn {
+    0%, 75% {
+        
+        color: rgba(22, 22, 22, 0);
+        border-color: rgba(22, 22, 22, 0);
+        background-color: rgb(22, 22, 22, .3);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#user h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-left: 15rem;
+}
+
+#client h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-right: 15rem;
+}
+
+#WinnerTitle {
+    color: #fff!important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 3rem!important;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#WinnerBox {
+    opacity: 0;
+    animation: TitleFadeIn 2s linear both;
+    -webkit-animation: TitleFadeIn 2s linear both;
+}
+
+@keyframes TitleFadeIn {
+    0%, 75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.winnerScreen {
+    height: 50vh;
+    width: 100vw;
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.winnerScreen div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.winnerScreen div em {
+    font-size: 5rem;
+    width: 200px;
+    position: relative;
+    height: 200px;
+    margin-top: 2rem;
+    color: var(--Dark_Text);
+    cursor: pointer;
+    background-color: white;
+    border-style: solid;
+    border-width: 1rem;
+    border-radius: 50%;
+    padding: 3rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.winnerScreen div em::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset -5px -5px 5px 5px rgba(0, 0, 0, .3);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.copyRights {
+    color: #fff;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+    -moz-transition: opacity 1s linear;
+    -ms-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+}
+
+.copyRights:hover {
+    opacity: 1;
+}
+
+.copyRights span {
+    letter-spacing: 31px;
+    font-size: 1rem;
+}
+
+.copyRights:hover .fa-heart {
+    color: var(--Rock);
+}
+
+.reset {
+    color: #fff;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    border: 1px solid #fff;
+    padding: .5rem;
+    border-radius: .7rem;
+    -webkit-border-radius: .7rem;
+    -moz-border-radius: .7rem;
+    -ms-border-radius: .7rem;
+    -o-border-radius: .7rem;
+}
+
+.reset:hover {
+    border-color: var(--Rock);
+    color: var(--Rock);
+}

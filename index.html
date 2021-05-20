@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/style.css">
+  <script src="./src/script.js" defer></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+    <link rel="shortcut icon" href="./src/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+  <article>
+    <section id="Header">
+      <ul>
+        <li>Rock</li>
+        <li>Paper</li>
+        <li>Scissors</li>
+      </ul>
+      <div class="Score">
+        <span>Score</span>
+        <h1 id="Score">12</h1>
+      </div>
+    </section>
+
+    <section id="Game">
+      <div id="Paper">
+        <em class="fas fa-hand-paper"></em>
+      </div>
+      <div id="Scissors">
+        <em class="fas fa-hand-scissors"></em>
+      </div>
+      <div id="Rock">
+        <em class="fas fa-hand-rock"></em>
+      </div>
+    </section>
+
+
+    <section class="winnerScreen">
+      <div id="user">
+        <h1>You Picked</h1>
+        <em class="fas"></em>
+      </div>
+      <div id="WinnerBox">
+        <span id="WinnerTitle"></span>
+        <p id="PlayAgain" onclick="window.location.reload();">Play Again</p>
+      </div>
+      <div id="client">
+        <h1>The House Picked</h1>
+        <em class="fas"></em>
+      </div>
+    </section>
+
+    <div class="copyRights">
+      made with <em class="fas fa-heart"></em> by Osama Hussein<br>
+      <span>For NUB</span>
+    </div>
+    <div onclick="Reset();" class="reset" title="Once you click on this button, your score will be deleted and starting from zero">
+      <span>Reset</span>
+    </div>
+  </article>
+
+</body>
+
+</html>
